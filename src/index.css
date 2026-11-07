@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-obsidian: #07050a;
+    --bg-velvet: #130d1c;
+    --gold-leaf: #f5b041;
+    --saffron-flame: #e86f2c;
+    --crimson-spark: #d9383a;
+    --cream-silk: #fffdf9;
+    --warm-champagne: #e6d7c3;
+    --muted-brass: #9e8c70;
+  }
+
+  * {
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  input,
+  textarea {
+    user-select: text;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100dvh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #07050a;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #fffdf9;
+  }
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-ornate {
+  font-family: 'Cinzel Decorative', 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-ui {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Metallic Gold Leaf Text Effect */
+.text-gold-leaf {
+  background: linear-gradient(
+    180deg,
+    #fffdf9 0%,
+    #ffe082 32%,
+    #f5b041 68%,
+    #c87d12 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 4px 24px rgba(245, 176, 65, 0.35));
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    #f5b041 0%,
+    #fffdf9 28%,
+    #ffe082 50%,
+    #e86f2c 76%,
+    #f5b041 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 5s linear infinite;
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Smoked Glass Card */
+.smoked-glass-card {
+  background: rgba(22, 15, 32, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(245, 176, 65, 0.28);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.85),
+    0 0 50px rgba(245, 176, 65, 0.12),
+    inset 0 1px 0 rgba(255, 253, 249, 0.14);
+}
+
+.smoked-glass-pill {
+  background: rgba(19, 13, 28, 0.74);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(245, 176, 65, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+/* Realistic Multi-Layered Diya Flame Animation */
+@keyframes flameDanceOuter {
+  0%,
+  100% {
+    transform: translateX(calc(var(--wind-lean, 0deg) * 0.2)) scaleX(1) scaleY(1)
+      rotate(calc(-1.5deg + var(--wind-lean, 0deg)));
+    opacity: 0.94;
+  }
+  25% {
+    transform: translateX(calc(var(--wind-lean, 0deg) * 0.25)) scaleX(0.95) scaleY(1.06)
+      rotate(calc(2deg + var(--wind-lean, 0deg)));
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(calc(var(--wind-lean, 0deg) * 0.15)) scaleX(1.04) scaleY(0.96)
+      rotate(calc(-2.2deg + var(--wind-lean, 0deg)));
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateX(calc(var(--wind-lean, 0deg) * 0.3)) scaleX(0.97) scaleY(1.04)
+      rotate(calc(1.2deg + var(--wind-lean, 0deg)));
+    opacity: 0.98;
+  }
+}
+
+@keyframes flameDanceInner {
+  0%,
+  100% {
+    transform: scaleX(1) scaleY(1) rotate(1deg);
+  }
+  33% {
+    transform: scaleX(0.92) scaleY(1.08) rotate(-1.8deg);
+  }
+  66% {
+    transform: scaleX(1.05) scaleY(0.95) rotate(1.5deg);
+  }
+}
+
+@keyframes haloBreath {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.58;
+  }
+  50% {
+    transform: scale(1.16);
+    opacity: 0.85;
+  }
+}
+
+.animate-flame-outer {
+  transform-origin: 50% 90%;
+  animation: flameDanceOuter 2.1s ease-in-out infinite;
+}
+
+.animate-flame-inner {
+  transform-origin: 50% 92%;
+  animation: flameDanceInner 1.4s ease-in-out infinite;
+}
+
+.animate-halo-breath {
+  transform-origin: 50% 50%;
+  animation: haloBreath 2.8s ease-in-out infinite;
+}
+
+/* Slow Mandala Rotation */
+@keyframes mandalaSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mandalaSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-mandala-slow {
+  animation: mandalaSpin 95s linear infinite;
+}
+
+.animate-mandala-reverse {
+  animation: mandalaSpinReverse 120s linear infinite;
+}
+
+/* Input Validation Shake */
+@keyframes gentleShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-shake {
+  animation: gentleShake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* Fairy Light Twinkle */
+@keyframes bulbTwinkle {
+  0%,
+  100% {
+    opacity: 0.65;
+    filter: drop-shadow(0 0 6px #f5b041) drop-shadow(0 0 14px #e86f2c);
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px #fffdf9) drop-shadow(0 0 22px #f5b041);
+    transform: scale(1.08);
+  }
+}
+
+.animate-bulb-twinkle {
+  animation: bulbTwinkle 2.4s ease-in-out infinite;
+}
+
+/* Entrance Choreographies */
+@keyframes celebrateReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+.animate-celebrate-reveal {
+  animation: celebrateReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
